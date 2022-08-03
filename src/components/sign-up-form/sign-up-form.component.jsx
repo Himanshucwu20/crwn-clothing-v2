@@ -1,5 +1,5 @@
 import { getDefaultNormalizer } from "@testing-library/react";
-import { useState } from "react";
+import { useState} from "react";
 
 import './sign-up-form.styles.scss'
 
@@ -19,8 +19,6 @@ const SignUpForm = () => {
     const [formFields, setFormFields]= useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
 
-    console.log(formFields);
-
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     }
@@ -34,6 +32,7 @@ const SignUpForm = () => {
 
         try{
             const {user} = await createAuthUserWithEmailAndPassword(email,password);
+
             await createUserDocumentFromAuth(user,{displayName});
             resetFormFields();
         } catch(error) {
@@ -55,7 +54,7 @@ const SignUpForm = () => {
 
     return(
        <div className="sign-up-container">
-        <h2>Don't have an account?</h2>
+        <h2>Don't have an account ?</h2>
         <span>Sign Up with your Email and Password</span>
         <form onSubmit={handleSubmit}>
             
